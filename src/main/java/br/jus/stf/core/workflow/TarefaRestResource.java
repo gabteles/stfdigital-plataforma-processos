@@ -4,6 +4,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 import java.net.URI;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,11 +45,13 @@ public class TarefaRestResource {
 
     @SuppressWarnings("unchecked")
 	private List<TarefaDto> tarefas(String servico) {
-		URI servicesUri = discoveryClient.getInstances(servico).get(0).getUri();
-		
-		URI uri = UriComponentsBuilder.fromUri(servicesUri).path("/api/tarefas").build().toUri();
-		
-		return new RestTemplate().getForObject(uri, List.class);
+		 return discoveryClient.getInstances(servico).stream()
+			.findAny()
+			.map(instance -> {
+				URI servicesUri = instance.getUri();
+				URI uri = UriComponentsBuilder.fromUri(servicesUri).path("/api/tarefas").build().toUri();
+				return new RestTemplate().getForObject(uri, List.class); 
+			}).orElse(Collections.emptyList());
 	}
     
 }
