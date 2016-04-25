@@ -95,5 +95,6 @@ dependencies {
 docker {
     name jar.baseName
     dockerfile 'src/main/docker/Dockerfile'
+    files 'src/main/docker/docker-entrypoint.sh'
     dependsOn tasks.jar, tasks.bootRepackage, tasks.build
 }
