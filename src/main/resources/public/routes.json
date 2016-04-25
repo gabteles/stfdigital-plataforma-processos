@@ -1,0 +1,23 @@
+[
+	{
+		"description": "Nova petição física",
+		"stateName": "app.novo-processo.recebimento",
+		"urlPrefix": "/peticoes-fisicas",
+		"type": "load",
+		"src": "recebimento/peticoes-fisicas"
+	},
+	{
+		"description": "Nova petição",
+		"stateName": "app.novo-processo.peticionamento",
+		"urlPrefix": "/peticoes",
+		"type": "load",
+		"src": "peticionamento/peticoes"
+	},
+	{
+		"description": "Processos",
+		"stateName": "app.pesquisa-avancada.processos",
+		"urlPrefix": "/processos",
+		"type": "load",
+		"src": "distribuicao/pesquisa-avancada"
+	}
+]
