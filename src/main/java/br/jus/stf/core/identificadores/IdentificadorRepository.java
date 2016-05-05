@@ -32,12 +32,12 @@ public class IdentificadorRepository {
 		
 		if (identificador == null) {
 			identificador = new Identificador(categoria, 0L);
+			identificador.incrementar();
+			entityManager.persist(identificador);
+		} else {
+			identificador.incrementar();
+			entityManager.merge(identificador);
 		}
-		
-		identificador.incrementar();
-		
-		entityManager.persist(identificador);
-		
 		return identificador;
 	}
 	
