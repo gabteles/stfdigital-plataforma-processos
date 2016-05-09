@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.web.servlet.ResultActions;
@@ -21,7 +20,7 @@ import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
  * @since 1.0.0
  * @since 25.03.2016
  */
-@Ignore
+
 @SpringApplicationConfiguration(classes = ApplicationContextInitializer.class)
 public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
 
@@ -42,6 +41,18 @@ public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
     	actions.andDo(MockMvcResultHandlers.print());
     	
         actions.andExpect((jsonPath("$", is(1))));
+    }
+    
+    @Test
+    public void incrementarIdentificadorExistente() throws Exception {
+    	ResultActions actions = mockMvc.perform(get("/api/identificadores").param("categoria", "2016").contentType(APPLICATION_JSON)).andExpect(status().isOk());
+    	
+    	actions.andDo(MockMvcResultHandlers.print());
+    	
+        actions.andExpect((jsonPath("$.numero", is(1))));
+        
+        actions = mockMvc.perform(get("/api/identificadores").param("categoria", "2016").contentType(APPLICATION_JSON)).andExpect(status().isOk());
+        actions.andExpect((jsonPath("$.numero", is(2))));
     }
     
 }
