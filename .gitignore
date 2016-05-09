@@ -2,6 +2,7 @@
 # Mac OS
 .DS_Store
 .project
+.eslintrc
 
 # Node
 node_modules

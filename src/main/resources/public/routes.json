@@ -16,8 +16,10 @@
 	{
 		"description": "Processos",
 		"stateName": "app.pesquisa-avancada.processos",
+		"navigationItem": "pesquisa-avancada.processos",
+		"translation": "PESQUISA-AVANCADA-PROCESSOS.PROCESSOS",
 		"urlPrefix": "/processos",
 		"type": "load",
-		"src": "distribuicao/pesquisa-avancada"
+		"src": "services/pesquisa-avancada/processos"
 	}
 ]
