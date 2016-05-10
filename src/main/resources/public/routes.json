@@ -14,6 +14,13 @@
 		"src": "peticionamento/peticoes"
 	},
 	{
+		"description": "Modelos",
+		"stateName": "app.novo-processo.modelos",
+		"urlPrefix": "/modelos",
+		"type": "load",
+		"src": "documents/modelos"
+	},
+	{
 		"description": "Processos",
 		"stateName": "app.pesquisa-avancada.processos",
 		"urlPrefix": "/processos",
