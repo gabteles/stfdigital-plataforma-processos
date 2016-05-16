@@ -47,7 +47,7 @@ gulp.task('ts-lint', function() {
 /**
  * Compile TypeScript and include references to library and app .d.ts files.
  */
-gulp.task('compile-ts', ['ts-lint'], function() {
+gulp.task('compile-ts', ['install-typings', 'ts-lint'], function() {
     return gulp.src([allTypeScript, libraryTypeScript])
 		.pipe($.sourcemaps.init())
 		.pipe($.typescript(tsProject))
