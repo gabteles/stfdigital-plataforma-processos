@@ -22,20 +22,19 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("io.spring.gradle:dependency-management-plugin:${dependencyManagementPlugin}")
         classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.6.0")
+        classpath("com.moowork.gradle:gradle-node-plugin:0.12")
+        classpath("com.moowork.gradle:gradle-gulp-plugin:0.12")
     }
 }
 
 apply plugin: "io.spring.dependency-management"
-
 apply plugin: 'spring-boot'
-
 apply plugin: 'eclipse'
-
 apply plugin: 'maven'
-
 apply plugin: 'java'
-
 apply plugin: "com.palantir.docker"
+apply plugin: 'com.moowork.node'
+apply plugin: 'com.moowork.gulp'
 
 repositories {
     mavenLocal()
@@ -92,9 +91,14 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
 }
 
+npmInstall.dependsOn npm_prune
+gulp_build.dependsOn tasks.npmInstall
+processResources.dependsOn gulp_build
+
+ext.dockerImageTag = project.hasProperty('dockerImageTag') ? project.getProperty('dockerImageTag') : ''
+
 docker {
-    name jar.baseName
+    name jar.baseName + (dockerImageTag ? ':' + dockerImageTag : '')
     dockerfile 'src/main/docker/Dockerfile'
-    files 'src/main/docker/docker-entrypoint.sh'
     dependsOn tasks.jar, tasks.bootRepackage, tasks.build
 }
