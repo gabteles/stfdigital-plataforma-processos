@@ -31,14 +31,14 @@ gulp.task('install-typings', function() {
  * Install all e2e typings files
  */
 gulp.task('install-typings:e2e', function() {
-    gulp.src('typings.json', {cwd : conf.paths.test})
+    return gulp.src('typings.json', {cwd : conf.paths.test})
         .pipe($.typings());
 });
 
 /**
  * Lint all custom TypeScript files.
  */
-gulp.task('ts-lint', function() {
+gulp.task('ts-lint', ['install-typings', 'install-typings:e2e'], function() {
     return gulp.src(allTypeScript)
     			.pipe($.tslint())
     			.pipe($.tslint.report('prose'));
@@ -47,19 +47,7 @@ gulp.task('ts-lint', function() {
 /**
  * Compile TypeScript and include references to library and app .d.ts files.
  */
-gulp.task('compile-ts', ['install-typings', 'ts-lint'], function() {
-    return gulp.src([allTypeScript, libraryTypeScript])
-		.pipe($.sourcemaps.init())
-		.pipe($.typescript(tsProject))
-		.pipe($.ngAnnotate())
-		.pipe($.sourcemaps.write('.'))
-		.pipe(gulp.dest(tsOutputPath));
-});
-
-/**
- * Compile TypeScript and include references to library and app .d.ts files.
- */
-gulp.task('compile-ts:e2e', ['install-typings:e2e', 'ts-lint'], function() {
+gulp.task('compile-ts:e2e', ['ts-lint'], function() {
     return gulp.src([allTypeScriptE2E, libraryTypeScriptE2E])
         .pipe($.typescript(tsProjectE2E))
         .pipe($.ngAnnotate())
