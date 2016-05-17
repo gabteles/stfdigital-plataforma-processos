@@ -1,7 +1,7 @@
 [
 	{
 		"description": "Nova petição física",
-		"stateName": "app.novo-processo.recebimento",
+		"stateName": "app.novo-processo.recebimento-peticao-fisica",
 		"urlPrefix": "/peticoes-fisicas",
 		"type": "load",
 		"src": "recebimento/peticoes-fisicas"
@@ -28,5 +28,22 @@
 		"urlPrefix": "/processos",
 		"type": "load",
 		"src": "services/pesquisa-avancada/processos"
+	},
+	
+	{
+		"description": "Autuação",
+		"stateName": "app.novo-processo.autuacao",
+		"urlPrefix": "/autuacao/autuar",
+		"type": "load",
+		"src": "autuacao/autuacao"
+	},
+	
+	{
+		"description": "Preautuação",
+		"stateName": "app.novo-processo.recebimento-preautuacao",
+		"urlPrefix": "/preautacao",
+		"type": "load",
+		"src": "recebimento/preautuacao"
 	}
+	
 ]
