@@ -2,30 +2,25 @@
 	{
 		"description": "Nova petição física",
 		"stateName": "app.novo-processo.recebimento-peticao-fisica",
-		"urlPrefix": "/peticoes-fisicas",
+		"url": "/novo-processo/recebimento",
 		"type": "load",
-		"src": "recebimento/peticoes-fisicas"
+		"src": "recebimento/remessa"
 	},
+	
 	{
 		"description": "Nova petição",
 		"stateName": "app.novo-processo.peticionamento",
-		"urlPrefix": "/peticoes",
+		"url": "/novo-processo/peticionamento",
 		"type": "load",
-		"src": "peticionamento/peticoes"
+		"src": "peticionamento/peticao"
 	},
-	{
-		"description": "Modelos",
-		"stateName": "app.novo-processo.modelos",
-		"urlPrefix": "/modelos",
-		"type": "load",
-		"src": "documents/modelos"
-	},
+	
 	{
 		"description": "Processos",
 		"stateName": "app.pesquisa-avancada.processos",
 		"navigationItem": "pesquisa-avancada.processos",
 		"translation": "PESQUISA-AVANCADA-PROCESSOS.PROCESSOS",
-		"urlPrefix": "/processos",
+		"url": "/pesquisa-avancada/processos",
 		"type": "load",
 		"src": "services/pesquisa-avancada/processos"
 	},
