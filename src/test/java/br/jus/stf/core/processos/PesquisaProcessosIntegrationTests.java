@@ -21,7 +21,7 @@ import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
  */
 @SpringApplicationConfiguration(ApplicationContextInitializer.class)
 @WebIntegrationTest({"server.port:0", "eureka.client.enabled:false"})
-@ActiveProfiles(Profiles.DEVELOPMENT)
+@ActiveProfiles({Profiles.DEVELOPMENT, "integration-test"})
 public class PesquisaProcessosIntegrationTests extends IntegrationTestsSupport {
 
     @Test

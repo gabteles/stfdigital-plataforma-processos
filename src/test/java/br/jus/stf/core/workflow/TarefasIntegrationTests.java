@@ -7,8 +7,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Test;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import br.jus.stf.core.ApplicationContextInitializer;
+import br.jus.stf.core.framework.Profiles;
 import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
 
 /**
@@ -19,6 +21,7 @@ import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
  */
 @SpringApplicationConfiguration(ApplicationContextInitializer.class)
 @WebIntegrationTest({"server.port:0", "eureka.client.enabled:false"})
+@ActiveProfiles({Profiles.DEVELOPMENT, "integration-test"})
 public class TarefasIntegrationTests extends IntegrationTestsSupport {
     
     @Test
