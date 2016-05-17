@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
@@ -23,7 +24,7 @@ import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
  * @since 1.0.0
  * @since 25.03.2016
  */
-
+@Ignore
 @SpringApplicationConfiguration(classes = ApplicationContextInitializer.class)
 @WebIntegrationTest({"server.port:0", "eureka.client.enabled:false"})
 @ActiveProfiles({Profiles.DEVELOPMENT, "integration-test"})
