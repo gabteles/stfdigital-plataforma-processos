@@ -14,8 +14,15 @@
 		"src": "peticionamento/peticoes"
 	},
 	{
-		"description": "Modelos",
-		"stateName": "app.novo-processo.modelos",
+		"description": "Modelos - Criação",
+		"stateName": "app.novo-processo.modelos-criar",
+		"urlPrefix": "/modelos",
+		"type": "load",
+		"src": "documents/modelos"
+	},
+	{
+		"description": "Modelos - Edição",
+		"stateName": "app.novo-processo.modelos-editar",
 		"urlPrefix": "/modelos",
 		"type": "load",
 		"src": "documents/modelos"
@@ -25,7 +32,7 @@
 		"stateName": "app.pesquisa-avancada.processos",
 		"navigationItem": "pesquisa-avancada.processos",
 		"translation": "PESQUISA-AVANCADA-PROCESSOS.PROCESSOS",
-		"urlPrefix": "/processos",
+		"url": "/processos/",
 		"type": "load",
 		"src": "services/pesquisa-avancada/processos"
 	}
