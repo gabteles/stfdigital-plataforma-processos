@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
  * @author Rodrigo Barreiros
@@ -20,19 +21,19 @@ public class Processo {
     @Id
     private String id;
     
-    @Field
+    @Field(type = FieldType.Long)
     private Long protocoloId;
     
-    @Field
+    @Field(type = FieldType.String)
     private String processoId;
     
-    @Field
+    @Field(type = FieldType.String)
     private String numero;
     
-    @Field(indexAnalyzer = "keyword")
+    @Field(type = FieldType.String, indexAnalyzer = "keyword")
     private String protocolo;
     
-    @Field
+    @Field(type = FieldType.String)
     private Set<String> partes = new HashSet<>();
     
     public Processo() {
