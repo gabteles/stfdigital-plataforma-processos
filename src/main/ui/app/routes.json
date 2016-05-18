@@ -4,7 +4,7 @@
 		"stateName": "app.novo-processo.recebimento-peticao-fisica",
 		"url": "/novo-processo/recebimento",
 		"type": "load",
-		"src": "recebimento/remessa"
+		"src": "recebimento/peticoes-fisicas"
 	},
 	
 	{
