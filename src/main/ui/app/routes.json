@@ -12,7 +12,7 @@
 		"stateName": "app.novo-processo.peticionamento",
 		"url": "/novo-processo/peticionamento",
 		"type": "load",
-		"src": "peticionamento/peticao"
+		"src": "peticionamento/peticoes"
 	},
 	
 	{
