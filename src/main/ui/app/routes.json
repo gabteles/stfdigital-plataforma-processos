@@ -53,5 +53,12 @@
         "urlPrefix": "/modelos",
         "type": "load",
         "src": "documents/modelos"
+    },
+    {
+        "description": "Modelos - Conteúdo - Edição",
+        "stateName": "app.novo-processo.modelos-conteudo-editar",
+        "urlPrefix": "/modelos",
+        "type": "load",
+        "src": "documents/modelos"
     }
 ]
