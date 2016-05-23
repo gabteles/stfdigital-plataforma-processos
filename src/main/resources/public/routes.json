@@ -28,5 +28,12 @@
 		"urlPrefix": "/processos",
 		"type": "load",
 		"src": "services/pesquisa-avancada/processos"
+	},
+	{
+		"description": "Distribuição de Processos",
+		"stateName": "app.novo-processo.distribuicao",
+		"urlPrefix": "/distribuicao",
+		"type": "load",
+		"src": "distribuicao/distribuicao"
 	}
 ]
