@@ -40,13 +40,19 @@
         "type": "load",
         "src": "distribuicao/distribuicao"
     },
-    
     {
         "description": "Preautuação",
         "stateName": "app.novo-processo.recebimento-preautuacao",
         "urlPrefix": "/novo-processo/preautacao",
         "type": "load",
         "src": "recebimento/preautuacao"
+    },
+    {
+        "description": "Preautuação de Recursais",
+        "stateName": "app.novo-processo.preautuacao-recursal",
+        "urlPrefix": "/novo-processo/preautacao-recursal",
+        "type": "load",
+        "src": "recebimento/recursal/preautuacao-recursal"
     },
     {
         "description": "Modelos - Criação",
