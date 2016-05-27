@@ -52,7 +52,7 @@
         "stateName": "app.novo-processo.preautuacao-recursal",
         "urlPrefix": "/novo-processo/preautacao-recursal",
         "type": "load",
-        "src": "recebimento/recursal/preautuacao-recursal"
+        "src": "recebimento/preautuacao-recursal"
     },
     {
         "description": "Modelos - Criação",
