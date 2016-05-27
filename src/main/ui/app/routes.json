@@ -48,6 +48,13 @@
         "src": "recebimento/preautuacao"
     },
     {
+        "description": "Devolução",
+        "stateName": "app.novo-processo.recebimento-devolucao",
+        "urlPrefix": "/novo-processo/devolucao",
+        "type": "load",
+        "src": "recebimento/devolucao"
+    },
+    {
         "description": "Preautuação de Recursais",
         "stateName": "app.novo-processo.preautuacao-recursal",
         "urlPrefix": "/novo-processo/preautacao-recursal",
