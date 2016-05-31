@@ -61,5 +61,12 @@
         "urlPrefix": "/modelos",
         "type": "load",
         "src": "documents/modelos"
+    },
+    {
+        "description": "Analise de Pressupostos",
+        "stateName": "app.novo-processo.analise-pressupostos",
+        "urlPrefix": "/novo-processo/autuacao/analise",
+        "type": "load",
+        "src": "autuacao/analise-pressupostos"
     }
 ]
