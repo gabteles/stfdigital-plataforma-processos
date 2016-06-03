@@ -37,6 +37,7 @@
     <logger name="org.springframework.jdbc" level="WARN"/>
     <logger name="io.undertow" level="WARN"/>
     <logger name="org.xnio" level="WARN"/>
+    <logger name="com.netflix.discovery" level="WARN"/>
     
 </configuration>
 
