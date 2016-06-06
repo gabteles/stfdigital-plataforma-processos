@@ -1,4 +1,4 @@
-package br.jus.stf.core.processos.application;
+package br.jus.stf.core.processos.domain;
 
 /**
  * @author Rodrigo Barreiros

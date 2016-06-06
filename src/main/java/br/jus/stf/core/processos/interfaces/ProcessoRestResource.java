@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.jus.stf.core.processos.application.PesquisarProcessosQuery;
-import br.jus.stf.core.processos.application.ProcessoFinder;
+import br.jus.stf.core.processos.domain.PesquisarProcessosQuery;
 import br.jus.stf.core.processos.domain.Processo;
+import br.jus.stf.core.processos.domain.ProcessoFinder;
 
 /**
  * @author Rodrigo Barreiros

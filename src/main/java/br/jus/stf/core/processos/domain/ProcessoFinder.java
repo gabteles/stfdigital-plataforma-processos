@@ -1,4 +1,4 @@
-package br.jus.stf.core.processos.application;
+package br.jus.stf.core.processos.domain;
 
 import static org.elasticsearch.index.query.QueryBuilders.matchPhraseQuery;
 
@@ -10,8 +10,6 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Component;
-
-import br.jus.stf.core.processos.domain.Processo;
 
 /**
  * @author Rodrigo Barreiros

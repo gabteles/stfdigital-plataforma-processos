@@ -55,13 +55,7 @@
         "type": "load",
         "src": "recebimento/preautuacao"
     },
-    {
-        "description": "Devolução",
-        "stateName": "app.novo-processo.recebimento-devolucao",
-        "urlPrefix": "/novo-processo/devolucao",
-        "type": "load",
-        "src": "recebimento/devolucao"
-    },
+    
     {
         "description": "Preautuação de Recursais",
         "stateName": "app.novo-processo.preautuacao-recursal",
@@ -69,20 +63,15 @@
         "type": "load",
         "src": "recebimento/preautuacao-recursal"
     },
+    
     {
-        "description": "Modelos - Criação",
-        "stateName": "app.novo-processo.modelos-criar",
-        "urlPrefix": "/modelos",
+        "description": "Devolução",
+        "stateName": "app.novo-processo.recebimento-devolucao",
+        "urlPrefix": "/novo-processo/devolucao",
         "type": "load",
-        "src": "documents/modelos"
+        "src": "recebimento/devolucao"
     },
-    {
-        "description": "Modelos - Edição",
-        "stateName": "app.novo-processo.modelos-editar",
-        "urlPrefix": "/modelos",
-        "type": "load",
-        "src": "documents/modelos"
-    },
+    
     {
         "description": "Analise de Pressupostos",
         "stateName": "app.novo-processo.analise-pressupostos",
@@ -90,6 +79,31 @@
         "type": "load",
         "src": "autuacao/analise-pressupostos"
 	},
+	
+	{
+        "description": "Revisão de Análise de Pressupostos",
+        "stateName": "app.novo-processo.revisao-analise-pressupostos",
+        "urlPrefix": "/novo-processo/recursal/revisao-analise-pressupostos",
+        "type": "load",
+        "src": "autuacao/revisao-analise-pressupostos"
+    },
+    
+    {
+        "description": "Modelos - Criação",
+        "stateName": "app.novo-processo.modelos-criar",
+        "urlPrefix": "/modelos",
+        "type": "load",
+        "src": "documents/modelos"
+    },
+    
+    {
+        "description": "Modelos - Edição",
+        "stateName": "app.novo-processo.modelos-editar",
+        "urlPrefix": "/modelos",
+        "type": "load",
+        "src": "documents/modelos"
+    },
+    
 	{
         "description": "Modelos - Conteúdo - Edição",
         "stateName": "app.novo-processo.modelos-conteudo-editar",
