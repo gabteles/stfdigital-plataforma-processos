@@ -96,5 +96,12 @@
         "urlPrefix": "/modelos",
         "type": "load",
         "src": "documents/modelos"
+    }, 
+    {
+        "description": "Autuação de recursais",
+        "stateName": "app.novo-processo.autuacao-criminal",
+        "urlPrefix": "/novo-processo/autuacao/criminal",
+        "type": "load",
+        "src": "autuacao/autuacao-criminal"
     }
 ]
