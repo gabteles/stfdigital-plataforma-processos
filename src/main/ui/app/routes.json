@@ -111,11 +111,20 @@
         "type": "load",
         "src": "documents/modelos"
     }, 
+    
     {
         "description": "Autuação de recursais",
         "stateName": "app.novo-processo.autuacao-criminal",
-        "urlPrefix": "/novo-processo/autuacao/criminal",
+        "urlPrefix": "/novo-processo/autuacao/recursal",
         "type": "load",
         "src": "autuacao/autuacao-criminal"
+    },
+    
+    {
+        "description": "Analise de Repercussao Geral",
+        "stateName": "app.novo-processo.analise",
+        "urlPrefix": "/novo-processo/autuacao/analiserg",
+        "type": "load",
+        "src": "autuacao/revisao-analise-repercussao-geral"
     }
 ]
