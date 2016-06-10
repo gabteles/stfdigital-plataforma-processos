@@ -73,6 +73,14 @@
     },
     
     {
+        "description": "Assinatura de Devolução",
+        "stateName": "app.novo-processo.devolucao-assinatura",
+        "urlPrefix": "/novo-processo/devolucao-assinatura",
+        "type": "load",
+        "src": "recebimento/devolucao-assinatura"
+    },
+    
+    {
         "description": "Analise de Pressupostos",
         "stateName": "app.novo-processo.analise-pressupostos",
         "urlPrefix": "/novo-processo/autuacao/analise",
