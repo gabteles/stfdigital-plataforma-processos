@@ -1,0 +1,10 @@
+[  
+    {
+        "id": "pesquisar-processos",
+        "stateName": "app.pesquisa-avancada.processos",
+        "navigationItem": "pesquisa-avancada.processos",
+        "translation": "PESQUISA-AVANCADA-PROCESSOS.PROCESSOS",
+        "urlPrefix": "/pesquisa-avancada/processos",
+        "src": "services/pesquisa-avancada/processos"
+    }
+]
