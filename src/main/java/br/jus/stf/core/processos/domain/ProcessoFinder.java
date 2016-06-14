@@ -11,6 +11,8 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Component;
 
+import br.jus.stf.core.framework.component.query.Query;
+
 /**
  * @author Rodrigo Barreiros
  * 
@@ -23,6 +25,7 @@ public class ProcessoFinder {
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 	
+    @Query(description = "Processos")
 	public List<Processo> execute(PesquisarProcessosQuery processoQuery) {
 		NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
 		
