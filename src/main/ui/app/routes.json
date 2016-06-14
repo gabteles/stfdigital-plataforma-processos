@@ -121,7 +121,7 @@
     }, 
     
     {
-        "description": "Autuação de recursais",
+        "description": "Autuação de Criminais/Eleitorais",
         "stateName": "app.novo-processo.autuacao-criminal",
         "urlPrefix": "/novo-processo/autuacao/recursal",
         "type": "load",
@@ -133,6 +133,6 @@
         "stateName": "app.novo-processo.analise",
         "urlPrefix": "/novo-processo/autuacao/analiserg",
         "type": "load",
-        "src": "autuacao/revisao-analise-repercussao-geral"
+        "src": "autuacao/analise-repercussao-geral"
     }
 ]
