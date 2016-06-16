@@ -7,7 +7,9 @@ var moduleNameInjector = require('gulp-systemjs-module-name-injector');
 
 var conf = require('../../../gulp/conf');
 
-var tsProject = typescript.createProject(path.join(conf.paths.src, 'tsconfig.json'));
+var createTsProject = function() {
+	return typescript.createProject(path.join(conf.paths.src, 'tsconfig.json'));
+};
 var libraryTypeScript = path.join(conf.paths.src, 'typings/main/**/*.d.ts');
 
 module.exports = {
@@ -19,7 +21,7 @@ module.exports = {
     	  rev: false,
     	  transforms: {
               scripts: lazypipe()
-              	.pipe(typescript, tsProject)
+              	.pipe(typescript, createTsProject())
               	.pipe(moduleNameInjector, {rootDir: 'src/main/ui/app/', prefix: 'services/'})
               	.pipe(ngAnnotate)
               	.pipe(embedTemplates, {
