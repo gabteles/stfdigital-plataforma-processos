@@ -6,7 +6,6 @@ System.config({
 		'system-polyfills': './node_modules/systemjs/dist/system-polyfills.src.js'
 	},
 	bundles: {
-		'services/pesquisa-avancada/processos': ['services/pesquisa-avancada/processos/*']
-	},
-	strictImportSequence: true
+		'services/bundle': ['services/pesquisa-avancada/processos/*']
+	}
 });

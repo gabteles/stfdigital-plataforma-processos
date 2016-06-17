@@ -1,21 +1,21 @@
 buildscript {
-	ext {
+    ext {
         springBootVersion = '1.3.5.RELEASE'
         springPlatformVersion = '2.0.5.RELEASE'
-		dependencyManagementPlugin = '0.5.2.RELEASE'
+        dependencyManagementPlugin = '0.5.2.RELEASE'
         springCloudVersion = '1.1.0.RELEASE'
-		apacheCommonsVersion = '3.3.2'
-		jacksonVersion = '2.7.2'
-		jacksonMapperVersion = '1.9.13'
-		swaggerVersion = '1.0.2'
-		guavaVersion = '19.0'
-		flywayVersion = '4.0'
-	}
+        apacheCommonsVersion = '3.3.2'
+        jacksonVersion = '2.7.2'
+        jacksonMapperVersion = '1.9.13'
+        swaggerVersion = '1.0.2'
+        guavaVersion = '19.0'
+        flywayVersion = '4.0'
+    }
     repositories {
-    	mavenLocal()
+        mavenLocal()
         mavenCentral()
         maven { url "http://repo.spring.io/release" }
-        maven { url "https://plugins.gradle.org/m2/" }        
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -27,12 +27,19 @@ buildscript {
 }
 
 apply plugin: "io.spring.dependency-management"
+
 apply plugin: 'spring-boot'
+
 apply plugin: 'eclipse'
+
 apply plugin: 'maven'
+
 apply plugin: 'java'
+
 apply plugin: "com.palantir.docker"
+
 apply plugin: 'com.moowork.node'
+
 apply plugin: 'com.moowork.gulp'
 
 repositories {
@@ -52,7 +59,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter")
     
     compile("org.springframework.boot:spring-boot-starter-actuator")
-		
+        
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: 'spring-boot-starter-tomcat'
     }
@@ -70,9 +77,9 @@ dependencies {
     compile("com.google.guava:guava:${guavaVersion}")
         
     compile("org.apache.commons:commons-lang3:${apacheCommonsVersion}")
-		
+        
     compile("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
-		
+        
     compile("org.codehaus.jackson:jackson-mapper-asl:${jacksonMapperVersion}")
         
     compile("com.mangofactory:swagger-springmvc:$swaggerVersion")
@@ -93,9 +100,6 @@ dependencies {
 node {
   // Version of node to use.
   version = '5.9.1'
-
-  // Version of npm to use.
-  npmVersion = '3.7.3'
 
   // Base URL for fetching node distributions (change if you have a mirror).
   distBaseUrl = 'https://nodejs.org/dist'
