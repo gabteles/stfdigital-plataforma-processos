@@ -53,6 +53,6 @@ function run($translatePartialLoader: ITranslatePartialLoaderService, properties
 	$translatePartialLoader.addPart(properties.apiUrl + '/services/pesquisa-avancada/processos');
 }
 
-let pesquisaAvancadaProcessos: IModule = angular.module('app.pesquisa-avancada.processos', ['app.constants'])
+let pesquisaAvancadaProcessos: IModule = angular.module('app.pesquisa-avancada.processos', ['app.support'])
 pesquisaAvancadaProcessos.config(config).run(run);
 export default pesquisaAvancadaProcessos;

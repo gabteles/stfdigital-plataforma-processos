@@ -11,11 +11,17 @@ services:
     image: discovery
     ports:
      - "8761:8761"
+     - "47961:47961"
+    environment:
+     - JAVA_OPTS=-Xdebug, -Xrunjdwp:server=y,transport=dt_socket,address=47961,suspend=n
   gateway:
     container_name: gateway
     image: gateway
     ports:
      - "8765:8765"
+     - "47965:47965"
+    environment:
+     - JAVA_OPTS=-Xdebug, -Xrunjdwp:server=y,transport=dt_socket,address=47965,suspend=n
   ui:
     container_name: ui
     image: plataforma-ui

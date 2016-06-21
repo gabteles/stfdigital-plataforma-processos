@@ -23,9 +23,15 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/
     healthcheck:
-      enabled: true      
+      enabled: true
   instance:
     preferIpAddress: true
     
 flyway:
   validate-on-migrate: false
+
+http:
+  client:
+    ssl:
+      trust-store: truststores/truststore.jks
+      trust-store-password: changeit
