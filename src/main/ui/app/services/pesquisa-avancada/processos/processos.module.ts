@@ -1,9 +1,10 @@
 import ITranslatePartialLoaderService = angular.translate.ITranslatePartialLoaderService;
 import IStateProvider = angular.ui.IStateProvider;
 import IModule = angular.IModule;
+import Properties = app.support.constants.Properties;
 
 /** @ngInject **/
-function config($stateProvider: IStateProvider, properties) {
+function config($stateProvider: IStateProvider, properties: Properties) {
 	
     $stateProvider.state('app.pesquisa-avancada.processos', {
         url: '/processos',
@@ -48,11 +49,12 @@ function config($stateProvider: IStateProvider, properties) {
 }
 
 /** @ngInject **/
-function run($translatePartialLoader: ITranslatePartialLoaderService, properties) {
+function run($translatePartialLoader: ITranslatePartialLoaderService, properties: Properties) {
 	
 	$translatePartialLoader.addPart(properties.apiUrl + '/services/pesquisa-avancada/processos');
 }
 
 let pesquisaAvancadaProcessos: IModule = angular.module('app.pesquisa-avancada.processos', ['app.support'])
 pesquisaAvancadaProcessos.config(config).run(run);
+
 export default pesquisaAvancadaProcessos;
