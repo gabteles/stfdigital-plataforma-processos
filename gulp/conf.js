@@ -7,6 +7,8 @@
  */
 
 var gutil = require('gulp-util');
+var path = require('path');
+var custom = require('./custom');
 
 /**
  *  The main paths of your project handle these with care
