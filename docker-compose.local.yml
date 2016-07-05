@@ -18,17 +18,7 @@ services:
      - "8765:8765"
      - "47965:${JAVA_DEBUG_PORT}"
     environment:
-     - JAVA_OPTS=${JAVA_DEBUG_OPTS} ${JAVA_SERVICE_OPTS}     
-  services:
-    image: stfdigital-plataforma-services
-    ports:
-     - "8081:8081"
-     - "8181:8181"
-     - "47981:${JAVA_DEBUG_PORT}"
-    environment:
-     - spring.profiles.active=${JAVA_SERVICE_SPRING_PROFILES}
-     - JAVA_OPTS=${JAVA_DEBUG_OPTS} ${JAVA_SERVICE_OPTS}
-  ui:
+     - JAVA_OPTS=${JAVA_DEBUG_OPTS} ${JAVA_SERVICE_OPTS}  ui:
     image: stfdigital-plataforma-ui
     ports:
      - "8443:8443"
