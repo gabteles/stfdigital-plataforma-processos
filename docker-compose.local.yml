@@ -18,7 +18,8 @@ services:
      - "8765:8765"
      - "47965:${JAVA_DEBUG_PORT}"
     environment:
-     - JAVA_OPTS=${JAVA_DEBUG_OPTS} ${JAVA_SERVICE_OPTS}  ui:
+     - JAVA_OPTS=${JAVA_DEBUG_OPTS} ${JAVA_SERVICE_OPTS}
+  ui:
     image: stfdigital-plataforma-ui
     ports:
      - "8443:8443"
