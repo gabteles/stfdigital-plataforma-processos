@@ -11,6 +11,7 @@ services:
     ports:
      - "8765:8765"
   services:
+    image: stfdigital-plataforma-services
     environment:
      - spring.profiles.active=${JAVA_SERVICE_SPRING_PROFILES}
      - JAVA_OPTS=${JAVA_SERVICE_OPTS}
