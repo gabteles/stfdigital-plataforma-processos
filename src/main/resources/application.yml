@@ -34,4 +34,13 @@ http:
   client:
     ssl:
       trust-store: truststores/truststore.jks
-      trust-store-password: changeit
+      trust-store-password: changeit      
+      
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://userauthentication:8095/user
+      
+feign:
+  hystrix:
+    enabled: false      
