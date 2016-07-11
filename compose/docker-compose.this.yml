@@ -3,8 +3,9 @@ version: '2'
 services:
   services:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: services
+    image: stfdigital-plataforma-services
     depends_on:
      - rabbit
      - discovery

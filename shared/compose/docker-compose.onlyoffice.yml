@@ -3,5 +3,5 @@ version: '2'
 services:
   onlyoffice:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: onlyoffice

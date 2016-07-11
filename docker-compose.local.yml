@@ -3,30 +3,30 @@ version: '2'
 services:
   rabbit:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: rabbit
   discovery:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: discovery
     image: stfdigital-plataforma-discovery
   gateway:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: gateway
     image: stfdigital-plataforma-gateway
     depends_on:
      - discovery
   ui:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: ui
     image: stfdigital-plataforma-ui
     depends_on:
      - gateway
   userauthentication:
     extends:
-      file: compose/shared/common.yml
+      file: shared/compose/common.yml
       service: userauthentication
     image: stfdigital-plataforma-userauthentication
     depends_on:
