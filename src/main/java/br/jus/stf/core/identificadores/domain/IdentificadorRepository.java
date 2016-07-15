@@ -1,4 +1,4 @@
-package br.jus.stf.core.identificadores;
+package br.jus.stf.core.identificadores.domain;
 
 import static javax.persistence.LockModeType.PESSIMISTIC_WRITE;
 

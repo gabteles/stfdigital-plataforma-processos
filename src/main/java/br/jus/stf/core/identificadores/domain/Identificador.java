@@ -1,4 +1,4 @@
-package br.jus.stf.core.identificadores;
+package br.jus.stf.core.identificadores.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
