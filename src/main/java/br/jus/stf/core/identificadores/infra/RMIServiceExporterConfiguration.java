@@ -23,7 +23,6 @@ public class RMIServiceExporterConfiguration {
 		exporter.setServiceName("IdentificadorResource");
 		exporter.setService(identificadorResource);
 		exporter.setServiceInterface(IdentificadorResource.class);
-		exporter.setServicePort(10981);
 		return exporter;
 	}
 	
