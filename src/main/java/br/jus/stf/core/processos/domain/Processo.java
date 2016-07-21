@@ -30,7 +30,7 @@ public class Processo {
     @Field(type = FieldType.String)
     private String numero;
     
-    @Field(type = FieldType.String, indexAnalyzer = "keyword")
+    @Field(type = FieldType.String, analyzer = "keyword")
     private String protocolo;
     
     @Field(type = FieldType.String)

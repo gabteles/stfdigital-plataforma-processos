@@ -30,7 +30,7 @@ import br.jus.stf.core.shared.eventos.PeticaoRegistrada;
  */
 @Configuration
 @EnableRabbit
-@Profile("!integration-test")
+@Profile("!test")
 public class RabbitConfiguration {
 
 	public static final String REMESSA_REGISTRADA_QUEUE = "autuacao.remessa.registrada";
