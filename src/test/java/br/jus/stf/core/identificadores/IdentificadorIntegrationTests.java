@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 
 import br.jus.stf.core.ApplicationContextInitializer;
 import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
+import br.jus.stf.core.framework.testing.oauth2.WithMockOauth2User;
 
 /**
  * @author Rodrigo Barreiros
@@ -23,6 +24,7 @@ import br.jus.stf.core.framework.testing.IntegrationTestsSupport;
  */
 @Ignore
 @SpringBootTest(value = {"server.port:0", "eureka.client.enabled:false"}, classes = ApplicationContextInitializer.class)
+@WithMockOauth2User("peticionador")
 public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
 
     @Test
