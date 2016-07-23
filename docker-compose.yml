@@ -26,4 +26,5 @@ services:
       file: shared/compose/common.yml
       service: userauthentication
     depends_on:
+     - rabbit
      - discovery
