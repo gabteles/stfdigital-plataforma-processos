@@ -19,12 +19,11 @@ import br.jus.stf.core.identificadores.domain.IdentificadorRepository;
  */
 @RestController
 @RequestMapping("/api/identificadores")
-public class IdentificadorRestResource implements IdentificadorResource {
+public class IdentificadorRestResource {
 	
 	@Autowired
     private IdentificadorRepository identificadorRepository;
 	
-	@Override
 	@RequestMapping(method = GET)
 	public Long numero(@RequestParam(required = false) String categoria) {
 		if (StringUtils.isNotBlank(categoria)) {
