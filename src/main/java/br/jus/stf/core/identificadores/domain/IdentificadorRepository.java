@@ -24,10 +24,11 @@ public class IdentificadorRepository {
     private EntityManager entityManager;
 
 	/**
-	 * TODO Rodrigo Barreiros Criar teste unitário para validar a virada de ano.
+	 * @param categoria
+	 * @return
 	 */
 	@Transactional
-	public Identificador novoIdentficador(String categoria) {
+	public Identificador novoIdentificador(String categoria) {
 		Identificador identificador = entityManager.find(Identificador.class, categoria, PESSIMISTIC_WRITE);
 		
 		if (identificador == null) {
@@ -41,6 +42,9 @@ public class IdentificadorRepository {
 		return identificador;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Long novoIdentificadorId() {
 		Query query = entityManager.createNativeQuery("SELECT identificador.seq_identificador.NEXTVAL FROM DUAL");
 		return ((BigInteger) query.getSingleResult()).longValue();

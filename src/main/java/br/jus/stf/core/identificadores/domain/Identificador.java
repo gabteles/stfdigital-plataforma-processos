@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.apache.commons.lang3.Validate;
+
 import br.jus.stf.core.framework.domaindrivendesign.EntitySupport;
 
 /**
@@ -28,7 +30,14 @@ public class Identificador extends EntitySupport<Identificador, String> {
     	// Deve ser usado apenas pelo Hibernate, que sempre usa o construtor default antes de popular uma nova instância.
 	}
 
+	/**
+	 * @param categoria
+	 * @param numero
+	 */
 	public Identificador(String categoria, Long numero) {
+		Validate.notNull(numero, "Número é requerido.");
+		Validate.isTrue(numero >= 0, "Número deve ser maior ou igual a zero.");
+		
 		this.categoria = categoria;
 		this.numero = numero;
 	}
@@ -38,10 +47,16 @@ public class Identificador extends EntitySupport<Identificador, String> {
 		return categoria;
 	}
 	
+	/**
+	 * @return
+	 */
 	public Long numero() {
 		return numero;
 	}
 
+	/**
+	 * Incremeta o número vinculado a categoria. 
+	 */
 	public void incrementar() {
 		++numero;
 	}

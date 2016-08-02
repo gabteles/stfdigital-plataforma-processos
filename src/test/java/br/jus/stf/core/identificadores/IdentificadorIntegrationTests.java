@@ -1,12 +1,11 @@
 package br.jus.stf.core.identificadores;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.ResultActions;
@@ -22,7 +21,6 @@ import br.jus.stf.core.framework.testing.oauth2.WithMockOauth2User;
  * @since 1.0.0
  * @since 25.03.2016
  */
-@Ignore
 @SpringBootTest(value = {"server.port:0", "eureka.client.enabled:false"}, classes = ApplicationContextInitializer.class)
 @WithMockOauth2User("peticionador")
 public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
@@ -33,8 +31,7 @@ public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
     	
     	actions.andDo(MockMvcResultHandlers.print());
     	
-        actions.andExpect((jsonPath("$.categoria", is("ADI"))));
-        actions.andExpect((jsonPath("$.numero", is(1))));
+        actions.andExpect((jsonPath("$", equalTo(1))));
     }
     
     @Test
@@ -43,7 +40,7 @@ public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
     	
     	actions.andDo(MockMvcResultHandlers.print());
     	
-        actions.andExpect((jsonPath("$", is(1))));
+        actions.andExpect((jsonPath("$", equalTo(1))));
     }
     
     @Test
@@ -52,10 +49,10 @@ public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
     	
     	actions.andDo(MockMvcResultHandlers.print());
     	
-        actions.andExpect((jsonPath("$.numero", is(1))));
+        actions.andExpect((jsonPath("$", equalTo(1))));
         
         actions = mockMvc.perform(get("/api/identificadores").param("categoria", "2016").contentType(APPLICATION_JSON)).andExpect(status().isOk());
-        actions.andExpect((jsonPath("$.numero", is(2))));
+        actions.andExpect((jsonPath("$", equalTo(2))));
     }
     
 }

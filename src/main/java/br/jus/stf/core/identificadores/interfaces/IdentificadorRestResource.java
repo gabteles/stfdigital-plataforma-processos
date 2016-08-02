@@ -24,10 +24,14 @@ public class IdentificadorRestResource {
 	@Autowired
     private IdentificadorRepository identificadorRepository;
 	
+	/**
+	 * @param categoria
+	 * @return
+	 */
 	@RequestMapping(method = GET)
 	public Long numero(@RequestParam(required = false) String categoria) {
 		if (StringUtils.isNotBlank(categoria)) {
-			Identificador identficador = identificadorRepository.novoIdentficador(categoria);
+			Identificador identficador = identificadorRepository.novoIdentificador(categoria);
 			return identficador.numero();
 		} else {
 			return identificadorRepository.novoIdentificadorId();
