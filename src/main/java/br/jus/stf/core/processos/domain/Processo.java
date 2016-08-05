@@ -28,6 +28,9 @@ public class Processo {
     private String processoId;
     
     @Field(type = FieldType.String)
+    private String classe;
+    
+    @Field(type = FieldType.String)
     private String numero;
     
     @Field(type = FieldType.String, analyzer = "keyword")
@@ -70,7 +73,15 @@ public class Processo {
 		return processoId;
 	}
 
-    public void setNumero(String numero) {
+    public String getClasse() {
+		return classe;
+	}
+
+	public void setClasse(String classe) {
+		this.classe = classe;
+	}
+
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
     

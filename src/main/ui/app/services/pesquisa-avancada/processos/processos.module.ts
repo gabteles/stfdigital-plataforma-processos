@@ -22,12 +22,6 @@ function config($stateProvider: IStateProvider, properties: Properties) {
                         return angular.copy(response.data);
                     });
             },
-            searchResults: /** @ngInject **/ ($http, properties) => {
-                return $http.get(properties.apiUrl + '/services/api/processos')
-                    .then(response => {
-                        return angular.copy(response.data);
-                    });
-            },
             savedSearchs: /** @ngInject **/ ($http, properties) => {
                 return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/sample/saved-searchs.json')
                     .then( response => {

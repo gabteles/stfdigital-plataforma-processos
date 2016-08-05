@@ -1,11 +1,8 @@
 package br.jus.stf.core.processos.interfaces;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.jus.stf.core.processos.domain.PesquisarProcessosQuery;
+import br.jus.stf.core.processos.domain.PesquisarProcessosSuggestion;
 import br.jus.stf.core.processos.domain.Processo;
 import br.jus.stf.core.processos.domain.ProcessoFinder;
 
@@ -33,26 +31,17 @@ public class ProcessoRestResource {
 	@Autowired
 	private ProcessoFinder finder;
 
-	@RequestMapping(method = POST)
+	@RequestMapping(value = "/pesquisa-avancada", method = POST)
 	public List<Processo> pesquisar(@RequestBody @Valid PesquisarProcessosQuery query, BindingResult result) {
 		if (isBlank(query.getProtocolo()) && isBlank(query.getParte())) {
 			throw new IllegalArgumentException(result.getAllErrors().toString());
 		}
-		
 		return finder.execute(query);
 	}
 	
-	@RequestMapping(method = GET)
-	public List<ProcessoDto> pesquisar() {
-		List<ProcessoDto> dtos = new LinkedList<>();
-		
-		List<Processo> processos = finder.execute(new PesquisarProcessosQuery());
-		
-		for (Processo processo : processos) {
-			dtos.add(new ProcessoDto(processo.getProtocolo(), "Publicado", "Joaquim Barbosa", new Date()));
-		}
-		
-		return dtos;
+	@RequestMapping(value = "/sugestao", method = POST)
+	public List<Processo> sugerir(@RequestBody PesquisarProcessosSuggestion suggestion) {
+		return finder.execute(suggestion);
 	}
 	
 }
