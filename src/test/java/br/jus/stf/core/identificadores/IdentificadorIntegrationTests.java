@@ -21,7 +21,7 @@ import br.jus.stf.core.framework.testing.oauth2.WithMockOauth2User;
  * @since 1.0.0
  * @since 25.03.2016
  */
-@SpringBootTest(value = {"server.port:0", "eureka.client.enabled:false"}, classes = ApplicationContextInitializer.class)
+@SpringBootTest(value = {"server.port:0", "eureka.client.enabled:false", "spring.cloud.config.enabled:false"}, classes = ApplicationContextInitializer.class)
 @WithMockOauth2User("peticionador")
 public class IdentificadorIntegrationTests extends IntegrationTestsSupport {
 
