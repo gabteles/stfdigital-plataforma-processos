@@ -8,6 +8,7 @@ import static br.jus.stf.core.processos.infra.RabbitConfiguration.REMESSA_REGIST
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import br.jus.stf.core.processos.domain.Processo;
@@ -25,6 +26,7 @@ import br.jus.stf.core.shared.eventos.RemessaRegistrada;
  * @since 20.02.2016
  */
 @Component
+@Profile("!test")
 public class ProcessoEventHandler {
 	
 	@Autowired
