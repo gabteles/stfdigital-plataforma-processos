@@ -27,6 +27,7 @@ script:
 - gradle docker --refresh-dependencies && gradle gulpTestUnit && ./shared/scripts/test-e2e.sh
 - docker logs discovery
 - docker logs services
+- docker logs gateway
 after_success:
 - gradle gulpPublishUnitCoverage
 - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
