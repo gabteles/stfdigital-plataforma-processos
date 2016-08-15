@@ -6,7 +6,7 @@ package br.jus.stf.core.processos.domain;
  * @since 1.0.0
  * @since 29.02.2016
  */
-public class PesquisarProcessosSuggestion {
+public class SugerirProcessosQuery {
 	
 	private String identificacao;
 	

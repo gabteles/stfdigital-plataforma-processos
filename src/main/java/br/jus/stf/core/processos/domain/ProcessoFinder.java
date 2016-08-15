@@ -18,7 +18,7 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.stereotype.Component;
 
 import br.jus.stf.core.framework.component.query.Query;
-import br.jus.stf.core.framework.component.suggestion.Suggestion;
+import br.jus.stf.core.framework.component.query.QueryType;
 
 /**
  * @author Rodrigo Barreiros
@@ -52,10 +52,10 @@ public class ProcessoFinder {
         return elasticsearchTemplate.queryForList(query, Processo.class);
 	}
     
-    @Suggestion
-    public List<Processo> execute(PesquisarProcessosSuggestion processoSuggestion) {
+    @Query(description = "Sugestão de processos", type = QueryType.SUGGESTION)
+    public List<Processo> execute(SugerirProcessosQuery processosQuery) {
 		NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
-		String identificacao = processoSuggestion.getIdentificacao();
+		String identificacao = processosQuery.getIdentificacao();
 		
 		if (StringUtils.isNotBlank(identificacao)) {
 			String classe = parseIdentificacao(identificacao, CLASSE);

@@ -1,6 +1,7 @@
 package br.jus.stf.core.processos.interfaces;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 import java.util.List;
@@ -14,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.jus.stf.core.processos.domain.PesquisarProcessosQuery;
-import br.jus.stf.core.processos.domain.PesquisarProcessosSuggestion;
 import br.jus.stf.core.processos.domain.Processo;
 import br.jus.stf.core.processos.domain.ProcessoFinder;
+import br.jus.stf.core.processos.domain.SugerirProcessosQuery;
 
 /**
  * @author Rodrigo Barreiros
@@ -39,9 +40,9 @@ public class ProcessoRestResource {
 		return finder.execute(query);
 	}
 	
-	@RequestMapping(value = "/sugestao", method = POST)
-	public List<Processo> sugerir(@RequestBody PesquisarProcessosSuggestion suggestion) {
-		return finder.execute(suggestion);
+	@RequestMapping(value = "/sugestao", method = GET)
+	public List<Processo> sugerir(SugerirProcessosQuery query) {
+		return finder.execute(query);
 	}
 	
 }
