@@ -37,10 +37,10 @@ public class PesquisaProcessosIntegrationTests extends IntegrationTestsSupport {
     }
     
     @Test
-    public void deveSugerirUmProcesso() throws Exception {   	
+    public void deveSugerirUmProcesso() throws Exception {
     	Processo processo = new Processo(1L, "1");
     	processo.setId("teste");
-    	processo.setClasse("HC");
+    	processo.setClasse("RE");
     	processo.setNumero("123");
     	
     	IndexQueryBuilder builder = new IndexQueryBuilder();
@@ -52,7 +52,7 @@ public class PesquisaProcessosIntegrationTests extends IntegrationTestsSupport {
     	    	
         mockMvc.perform(get("/api/processos/sugestao")
         		.contentType(APPLICATION_JSON)
-        		.param("identificacao", "hc1"))
+        		.param("identificacao", "re1"))
         	.andExpect(status().isOk())
         	.andExpect(jsonPath("$", hasSize(1)));
         
