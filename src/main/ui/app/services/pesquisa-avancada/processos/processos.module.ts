@@ -17,10 +17,12 @@ function config($stateProvider: IStateProvider, properties: Properties) {
         },
         resolve: {
             traits: /** @ngInject **/ ($http, properties) => {
-                return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/sample/traits.json')
-                    .then(response => {
-                        return angular.copy(response.data);
-                    });
+                return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/traits.json')
+                    .then(response => { return response.data; });
+            },
+            resultColumns : /** @ngInject **/ ($http, properties) => {
+                return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/result-columns.json')
+                    .then(response => { return response.data; });
             },
             savedSearchs: /** @ngInject **/ ($http, properties) => {
                 return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/sample/saved-searchs.json')

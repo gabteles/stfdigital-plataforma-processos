@@ -1,0 +1,84 @@
+[
+	{
+		"header" : {
+			"title": "Processo",
+			"translate": "PESQUISA-AVANCADA.PROCESSO"
+		},
+		"result" : {
+			"field": "result.processo"
+		}
+	}, 
+	{
+		"header" : {
+			"title": "Texto",
+			"translate": "PESQUISA-AVANCADA.TEXTO"
+		},
+		"result" : {
+			"field": "result.texto"
+		}
+	},
+	{
+		"header" : {
+			"title": "Observação",
+			"translate": "PESQUISA-AVANCADA.OBSERVACAO"
+		},
+		"result" : {
+			"field": "result.observacao"
+		}
+	},
+	{
+		"header" : {
+			"title": "Fase",
+			"css": "text-center",
+			"translate": "PESQUISA-AVANCADA.FASE"
+		},
+		"result" : {
+			"field": "result.fase",		
+			"css": "text-center"
+		}			
+	},
+	{
+		"header" : {
+			"title": "Ministro",
+			"css": "text-center",
+			"translate": "PESQUISA-AVANCADA.MINISTRO"
+		},
+		"result" : {
+			"field": "result.ministro",		
+			"css": "text-center"
+		}			
+	},
+	{
+		"header" : {
+			"title": "Responsável",
+			"css": "text-center",
+			"translate": "PESQUISA-AVANCADA.RESPONSAVEL"
+		},
+		"result" : {
+			"field": "result.responsavel",		
+			"css": "text-center"
+		}			
+	},	
+	{
+		"header" : {
+			"title": "Data Início",
+			"css": "text-center",
+			"translate": "PESQUISA-AVANCADA.DATA-INICIO"
+		},
+		"result" : {
+			"field": "result.dataInicio * 1000 | date:'longDate'",
+			"css": "text-center"
+		}			
+	},
+	{
+		"header" : {
+			"title": "Controle de Voto",
+			"css": "text-center",
+			"translate": "PESQUISA-AVANCADA.CONTROLE-DE-VOTO"
+		},
+		"result" : {
+			"field": "'PESQUISA-AVANCADA.CONTROLE-VOTO.' + (result.controleVoto ? 'SIM' : 'NAO') | translate",
+			"css": "text-center"
+		}			
+	}    
+]
