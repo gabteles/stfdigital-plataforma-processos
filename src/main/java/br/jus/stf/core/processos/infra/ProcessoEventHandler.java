@@ -1,14 +1,11 @@
 package br.jus.stf.core.processos.infra;
 
-import static br.jus.stf.core.processos.infra.RabbitConfiguration.PARTE_REGISTRADA_QUEUE;
-import static br.jus.stf.core.processos.infra.RabbitConfiguration.PETICAO_PROCESSO_QUEUE;
-import static br.jus.stf.core.processos.infra.RabbitConfiguration.PROCESSO_AUTUADO_QUEUE;
-import static br.jus.stf.core.processos.infra.RabbitConfiguration.PROCESSO_REGISTRADO_QUEUE;
-import static br.jus.stf.core.processos.infra.RabbitConfiguration.REMESSA_REGISTRADA_QUEUE;
-
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.annotation.EnableBinding;
+import org.springframework.cloud.stream.annotation.Input;
+import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.context.annotation.Profile;
+import org.springframework.messaging.SubscribableChannel;
 import org.springframework.stereotype.Component;
 
 import br.jus.stf.core.processos.domain.Processo;
@@ -27,27 +24,28 @@ import br.jus.stf.core.shared.eventos.RemessaRegistrada;
  */
 @Component
 @Profile("!test")
+@EnableBinding(ProcessoEventHandler.Channels.class)
 public class ProcessoEventHandler {
 	
 	@Autowired
 	private ProcessoRepository processoRepository;
 	
-    @RabbitListener(queues = REMESSA_REGISTRADA_QUEUE)
+	@StreamListener(RemessaRegistrada.EVENT_KEY)
 	public void handle(RemessaRegistrada event) {
 		processoRepository.save(new Processo(event.getProtocoloId(), event.getProtocolo()));
 	}
 
-    @RabbitListener(queues = PETICAO_PROCESSO_QUEUE)
+	@StreamListener(PeticaoRegistrada.EVENT_KEY)
 	public void handle(PeticaoRegistrada event) {
 		processoRepository.save(new Processo(event.getProtocoloId(), event.getProtocolo()));
 	}
 
-	@RabbitListener(queues = PARTE_REGISTRADA_QUEUE)
+	@StreamListener(EnvolvidoRegistrado.EVENT_KEY)
 	public void handle(EnvolvidoRegistrado event) {
 		doIndexByProtocoloId(event.getProtocoloId(), processo -> processo.getPartes().add(event.getNome()));
 	}
 
-    @RabbitListener(queues = PROCESSO_REGISTRADO_QUEUE)
+	@StreamListener(ProcessoRegistrado.EVENT_KEY)
 	public void handle(ProcessoRegistrado event) {
 		doIndexByProtocoloId(event.getProtocoloId(), processo -> processo.setProcessoId(event.getProcessoId()));
 		
@@ -59,7 +57,7 @@ public class ProcessoEventHandler {
         }
     }
 
-	@RabbitListener(queues = PROCESSO_AUTUADO_QUEUE)
+	@StreamListener(ProcessoAutuado.EVENT_KEY)
 	public void handle(ProcessoAutuado event) {
 		doIndexByProcessoId(event.getProcessoId(), processo -> processo.setNumero(event.getNumero()));
 	}
@@ -97,6 +95,44 @@ public class ProcessoEventHandler {
 
 		void execute(Processo processo);
 		
+	}
+	
+	/**
+	 * Configuração dos canais que serão usados pelo serviço de peticionamento
+	 * para publicação de eventos de domínio.
+	 * 
+	 * @author Rodrigo Barreiros
+	 * 
+	 * @since 1.0.0
+	 * @since 18.08.2016
+	 */
+	public interface Channels {
+
+		/**
+		 * O canal que será usado para publicação de eventos do tipo {@link PeticaoRegistrada}.
+		 * 
+		 * @return o canal para as petições registradas
+		 */
+		@Input(PeticaoRegistrada.EVENT_KEY)
+		SubscribableChannel peticaoRegistrada();
+
+		/**
+		 * O canal que será usado para publicação de eventos do tipo {@link EnvolvidoRegistrado}.
+		 * 
+		 * @return o canal para os envolvidos registrados
+		 */
+		@Input(EnvolvidoRegistrado.EVENT_KEY)
+		SubscribableChannel envolvidoRegistrado();
+
+		@Input(RemessaRegistrada.EVENT_KEY)
+		SubscribableChannel remessaRegistrada();
+
+		@Input(ProcessoRegistrado.EVENT_KEY)
+		SubscribableChannel processoRegistrado();
+
+		@Input(ProcessoAutuado.EVENT_KEY)
+		SubscribableChannel processoAutuado();
+
 	}
 
 }
