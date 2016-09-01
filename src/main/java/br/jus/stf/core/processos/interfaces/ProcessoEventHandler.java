@@ -5,11 +5,13 @@ import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import br.jus.stf.core.processos.domain.Distribuicao;
 import br.jus.stf.core.processos.domain.Processo;
 import br.jus.stf.core.processos.domain.ProcessoRepository;
 import br.jus.stf.core.shared.eventos.EnvolvidoRegistrado;
 import br.jus.stf.core.shared.eventos.PeticaoRegistrada;
 import br.jus.stf.core.shared.eventos.ProcessoAutuado;
+import br.jus.stf.core.shared.eventos.ProcessoDistribuido;
 import br.jus.stf.core.shared.eventos.ProcessoRegistrado;
 import br.jus.stf.core.shared.eventos.RemessaRegistrada;
 
@@ -88,6 +90,17 @@ public class ProcessoEventHandler {
 		doIndexByProcessoId(event.getProcessoId(), processo -> processo.setNumero(event.getNumero()));
 	}
 	
+	/**
+	 * Indexa o processo pelo número do processo gerado na autuação.
+	 * 
+	 * @param event o registro do processo autuado
+	 */
+	@StreamListener(ProcessoDistribuido.EVENT_KEY)
+	public void handle(ProcessoDistribuido event) {
+		Distribuicao distribuicao = new Distribuicao(event.getRelatorId(), event.getRelator(), event.getData());
+		doIndexByProcessoId(event.getProcessoId(), processo -> processo.getDistribuicoes().add(distribuicao));
+	}
+	
 	// ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// Classes e Métodos Utilitários...
 	
@@ -133,7 +146,7 @@ public class ProcessoEventHandler {
 	
 	/**
 	 * Representa uma ação de indexação de um processo. Uma ação de indexação seria qualquer 
-	 * operação cujo objetivo é indexar uma determinada uma propriedade de um processo.
+	 * operação cujo objetivo é indexar uma determinada propriedade de um processo.
 	 * 
 	 * <p>Por exemplo, a indexação de processo por seu número seria uma ação indexação.
 	 * 

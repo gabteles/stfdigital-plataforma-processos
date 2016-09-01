@@ -2,6 +2,7 @@ package br.jus.stf.core.processos.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
@@ -39,6 +40,9 @@ public class Processo {
     @Field(type = FieldType.String)
     private Set<String> partes = new HashSet<>();
     
+    @Field(type = FieldType.Nested)
+    private Set<Distribuicao> distribuicoes = new TreeSet<>();
+    
     public Processo() {
     	// O Parser JSON (Jackson) sempre usa o construtor default antes de popular uma nova instância.
 	}
@@ -49,31 +53,31 @@ public class Processo {
 		this.protocolo = protocolo;
 	}
 
+	public String getId() {
+		return id;
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
-    
-    public String getId() {
-		return id;
-	}
-    
-    public void setProtocoloId(Long protocoloId) {
-		this.protocoloId = protocoloId;
-	}
-    
-    public Long getProtocoloId() {
+
+	public Long getProtocoloId() {
 		return protocoloId;
 	}
 
-    public void setProcessoId(String processoId) {
-		this.processoId = processoId;
+	public void setProtocoloId(Long protocoloId) {
+		this.protocoloId = protocoloId;
 	}
-    
-    public String getProcessoId() {
+
+	public String getProcessoId() {
 		return processoId;
 	}
 
-    public String getClasse() {
+	public void setProcessoId(String processoId) {
+		this.processoId = processoId;
+	}
+
+	public String getClasse() {
 		return classe;
 	}
 
@@ -81,28 +85,36 @@ public class Processo {
 		this.classe = classe;
 	}
 
+	public String getNumero() {
+		return numero;
+	}
+
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-    
-    public String getNumero() {
-		return numero;
-	}
-    
-    public void setProtocolo(String protocolo) {
-		this.protocolo = protocolo;
-	}
-    
-    public String getProtocolo() {
+
+	public String getProtocolo() {
 		return protocolo;
 	}
-    
-    public void setPartes(Set<String> partes) {
+
+	public void setProtocolo(String protocolo) {
+		this.protocolo = protocolo;
+	}
+
+	public Set<String> getPartes() {
+		return partes;
+	}
+
+	public void setPartes(Set<String> partes) {
 		this.partes = partes;
 	}
-    
-    public Set<String> getPartes() {
-		return partes;
+
+	public Set<Distribuicao> getDistribuicoes() {
+		return distribuicoes;
+	}
+
+	public void setDistribuicoes(Set<Distribuicao> distribuicoes) {
+		this.distribuicoes = distribuicoes;
 	}
     
 }

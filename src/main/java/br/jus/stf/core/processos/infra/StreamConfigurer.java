@@ -7,6 +7,7 @@ import org.springframework.messaging.SubscribableChannel;
 import br.jus.stf.core.shared.eventos.EnvolvidoRegistrado;
 import br.jus.stf.core.shared.eventos.PeticaoRegistrada;
 import br.jus.stf.core.shared.eventos.ProcessoAutuado;
+import br.jus.stf.core.shared.eventos.ProcessoDistribuido;
 import br.jus.stf.core.shared.eventos.ProcessoRegistrado;
 import br.jus.stf.core.shared.eventos.RemessaRegistrada;
 
@@ -72,6 +73,14 @@ public class StreamConfigurer {
 		 */
 		@Input(ProcessoAutuado.EVENT_KEY)
 		public SubscribableChannel processoAutuado();
+		
+		/**
+		 * O canal que será usado para receber eventos do tipo {@link ProcessoDistribuido}.
+		 * 
+		 * @return o canal para os processos distribuídos
+		 */
+		@Input(ProcessoDistribuido.EVENT_KEY)
+		public SubscribableChannel processoDistribuido();
 
 	}
 
