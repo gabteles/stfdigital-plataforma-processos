@@ -34,7 +34,7 @@ public class ElasticsearchLocalConfiguration extends ElasticsearchAutoConfigurat
 	 */
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		// Em desenvolvimento sempre apagamos os indeces para não comprometer os testes
+		// Em desenvolvimento sempre apagamos os índices para não comprometer os testes
 		FileSystemUtils.deleteRecursively(new File(ELASTIC_DATA_DIR));
 	}
 
