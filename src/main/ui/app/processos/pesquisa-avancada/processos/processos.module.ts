@@ -17,10 +17,10 @@ function config($stateProvider: IStateProvider, properties: Properties) {
         },
         resolve: {
             searchConfig : /** @ngInject **/ ($http, $q) => {
-                let traits = $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/traits.json');
-                let resultColumns = $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/result-columns.json');
-                let api = properties.apiUrl + '/services/api/processos/pesquisa-avancada';
-                let context = 'services';
+                let traits = $http.get(properties.apiUrl + '/processos/pesquisa-avancada/processos/config/traits.json');
+                let resultColumns = $http.get(properties.apiUrl + '/processos/pesquisa-avancada/processos/config/result-columns.json');
+                let api = properties.apiUrl + '/processos/api/processos/pesquisa-avancada';
+                let context = 'processos';
                 
                 return $q.all([traits, resultColumns])
                          .then(results => {
@@ -39,7 +39,7 @@ function config($stateProvider: IStateProvider, properties: Properties) {
 /** @ngInject **/
 function run($translatePartialLoader: ITranslatePartialLoaderService, properties: Properties) {
 	
-	$translatePartialLoader.addPart(properties.apiUrl + '/services/pesquisa-avancada/processos');
+	$translatePartialLoader.addPart(properties.apiUrl + '/processos/pesquisa-avancada/processos');
 }
 
 let pesquisaAvancadaProcessos: IModule = angular.module('app.pesquisa-avancada.processos', ['app.support'])
