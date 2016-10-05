@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:services;MODE=Oracle;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:processos;MODE=Oracle;DB_CLOSE_DELAY=-1
     username: sa
     password: 
   h2:

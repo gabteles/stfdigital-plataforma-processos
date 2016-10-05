@@ -1,5 +1,9 @@
 {
     "PESQUISA-AVANCADA-PROCESSOS": {
-        "PROCESSOS": "Processos"
+        "PROCESSOS": "Processos",
+        "PROCESSO": "Processo",
+        "PROTOCOLO": "Protocolo",
+        "RELATOR": "Relator",
+        "DISTRIBUICAO": "Distribuição"
     }
 }

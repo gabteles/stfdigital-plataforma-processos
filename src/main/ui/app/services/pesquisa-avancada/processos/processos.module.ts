@@ -16,29 +16,21 @@ function config($stateProvider: IStateProvider, properties: Properties) {
             }
         },
         resolve: {
-            traits: /** @ngInject **/ ($http, properties) => {
-                return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/traits.json')
-                    .then(response => { return response.data; });
-            },
-            resultColumns : /** @ngInject **/ ($http, properties) => {
-                return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/result-columns.json')
-                    .then(response => { return response.data; });
-            },
-            savedSearchs: /** @ngInject **/ ($http, properties) => {
-                return $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/sample/saved-searchs.json')
-                    .then( response => {
-                        var savedSearchs = angular.copy(response.data);
-                        savedSearchs.forEach(savedSearch => {
-                            savedSearch.criterias.forEach((criteria: any) => {
-                                if (criteria.trait.dataType === 'date') {
-                                    criteria.value = _.isArray(criteria) ?
-                                        [new Date(criteria.value[0]), new Date(criteria.value[1])]
-                                        : new Date(criteria.value);
-                                }
-                            });
-                        });
-                        return savedSearchs;
-                    });
+            searchConfig : /** @ngInject **/ ($http, $q) => {
+                let traits = $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/traits.json');
+                let resultColumns = $http.get(properties.apiUrl + '/services/pesquisa-avancada/processos/config/result-columns.json');
+                let api = properties.apiUrl + '/services/api/processos/pesquisa-avancada';
+                let context = 'services';
+                
+                return $q.all([traits, resultColumns])
+                         .then(results => {
+                             return {
+                                 traits : results[0].data,
+                                 resultColumns: results[1].data,
+                                 api: api,
+                                 context: context
+                             }
+                         });
             }
         }
     });
