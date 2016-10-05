@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
  * @since 1.0.0
  * @since 18.12.2015
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "br.jus.stf")
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @EnableResourceServer
 @EnableFeignClients
