@@ -2,8 +2,6 @@ package br.jus.stf.plataforma.identificadores.domain;
 
 import static javax.persistence.LockModeType.PESSIMISTIC_WRITE;
 
-import java.math.BigInteger;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
@@ -47,7 +45,7 @@ public class IdentificadorRepository {
 	 */
 	public Long novoIdentificadorId() {
 		Query query = entityManager.createNativeQuery("SELECT identificador.seq_identificador.NEXTVAL FROM DUAL");
-		return ((BigInteger) query.getSingleResult()).longValue();
+		return ((Number) query.getSingleResult()).longValue();
 	}
 
 }
