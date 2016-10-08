@@ -1,1 +1,1 @@
-import './processos/pesquisa-avancada/processo'
+import './processos/pesquisa-avancada'

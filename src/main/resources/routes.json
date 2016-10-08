@@ -5,6 +5,6 @@
         "navigationItem": "pesquisa-avancada.processos",
         "translation": "PESQUISA-AVANCADA-PROCESSOS.PROCESSOS",
         "urlPrefix": "/pesquisa-avancada/processos",
-        "src": "processos/pesquisa-avancada/processos"
+        "src": "processos/pesquisa-avancada"
     }
 ]

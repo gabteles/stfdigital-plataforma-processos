@@ -26,7 +26,7 @@ import br.jus.stf.plataforma.processos.domain.SugerirProcessosQuery;
  * @since 07.03.2016
  */
 @RestController
-@RequestMapping("/api/processos")
+@RequestMapping("/api")
 public class ProcessoRestResource {
 	
 	@Autowired

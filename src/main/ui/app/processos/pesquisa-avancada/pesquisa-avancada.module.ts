@@ -16,10 +16,10 @@ function config($stateProvider: IStateProvider, properties: Properties) {
             }
         },
         resolve: {
-            searchConfig : /** @ngInject **/ ($http, $q) => {
-                let traits = $http.get(properties.apiUrl + '/processos/pesquisa-avancada/processos/config/traits.json');
-                let resultColumns = $http.get(properties.apiUrl + '/processos/pesquisa-avancada/processos/config/result-columns.json');
-                let api = properties.apiUrl + '/processos/api/processos/pesquisa-avancada';
+            searchConfig : /** @ngInject **/ ($http, $q, $translatePartialLoader) => {
+                let traits = $http.get(properties.apiUrl + '/processos/pesquisa-avancada/config/traits.json');
+                let resultColumns = $http.get(properties.apiUrl + '/processos/pesquisa-avancada/config/result-columns.json');
+                let api = properties.apiUrl + '/processos/api/pesquisa-avancada';
                 let context = 'processos';
                 
                 return $q.all([traits, resultColumns])
@@ -37,9 +37,9 @@ function config($stateProvider: IStateProvider, properties: Properties) {
 }
 
 /** @ngInject **/
-function run($translatePartialLoader: ITranslatePartialLoaderService, properties: Properties) {
-	
-	$translatePartialLoader.addPart(properties.apiUrl + '/processos/pesquisa-avancada/processos');
+function run($translatePartialLoader: ITranslatePartialLoaderService, properties: Properties, $translate) {
+    
+	$translatePartialLoader.addPart(properties.apiUrl + '/processos/pesquisa-avancada');
 }
 
 let pesquisaAvancadaProcessos: IModule = angular.module('app.pesquisa-avancada.processos', ['app.support'])

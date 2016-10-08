@@ -33,7 +33,7 @@ public class PesquisaProcessosIntegrationTests extends IntegrationTestsSupport {
 
     @Test
     public void deveRejeitarUmaPesquisaInvalida() throws Exception {
-        mockMvc.perform(post("/api/processos/pesquisa-avancada").contentType(APPLICATION_JSON).content("{}")).andExpect(status().isBadRequest());
+        mockMvc.perform(post("/api/pesquisa-avancada").contentType(APPLICATION_JSON).content("{}")).andExpect(status().isBadRequest());
     }
     
     @Test
@@ -50,7 +50,7 @@ public class PesquisaProcessosIntegrationTests extends IntegrationTestsSupport {
     	elasticsearchTemplate.index(builder.build());
         elasticsearchTemplate.refresh("processos");
     	    	
-        mockMvc.perform(get("/api/processos/sugestao")
+        mockMvc.perform(get("/api/sugestao")
         		.contentType(APPLICATION_JSON)
         		.param("identificacao", "re1"))
         	.andExpect(status().isOk())
