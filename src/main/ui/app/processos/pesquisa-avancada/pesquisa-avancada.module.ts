@@ -37,7 +37,7 @@ function config($stateProvider: IStateProvider, properties: Properties) {
 }
 
 /** @ngInject **/
-function run($translatePartialLoader: ITranslatePartialLoaderService, properties: Properties, $translate) {
+function run($translatePartialLoader: ITranslatePartialLoaderService, properties: Properties) {
     
 	$translatePartialLoader.addPart(properties.apiUrl + '/processos/pesquisa-avancada');
 }

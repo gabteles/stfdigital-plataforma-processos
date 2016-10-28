@@ -1,7 +1,6 @@
 package br.jus.stf.plataforma.processos.domain;
 
 import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
-import static org.elasticsearch.index.query.QueryBuilders.matchPhraseQuery;
 import static org.elasticsearch.index.query.QueryBuilders.prefixQuery;
 import static org.elasticsearch.index.query.QueryBuilders.termQuery;
 
@@ -15,10 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
+import org.springframework.data.elasticsearch.core.query.StringQuery;
 import org.springframework.stereotype.Component;
 
 import br.jus.stf.core.framework.component.query.Query;
 import br.jus.stf.core.framework.component.query.QueryType;
+import br.jus.stf.core.framework.component.query.helper.BoolQueryHelper;
 
 /**
  * @author Rodrigo Barreiros
@@ -34,22 +35,12 @@ public class ProcessoFinder {
 	
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
-	
+    
     @Query(description = "Processos")
 	public List<Processo> execute(PesquisarProcessosQuery processoQuery) {
-		NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
-		
-		if (StringUtils.isNotBlank(processoQuery.getProtocolo())) {
-			queryBuilder.withQuery(matchPhraseQuery("protocolo", processoQuery.getProtocolo()));
-		}
-		
-		if (StringUtils.isNotBlank(processoQuery.getParte())) {
-			queryBuilder.withQuery(matchPhraseQuery("partes", processoQuery.getParte()));
-		}
-        
-        SearchQuery query = queryBuilder.build();
-        
-        return elasticsearchTemplate.queryForList(query, Processo.class);
+        String query = BoolQueryHelper.toJSONQuery(processoQuery.getCriterias());
+        StringQuery stringQuery = new StringQuery(query);
+        return elasticsearchTemplate.queryForList(stringQuery, Processo.class);
 	}
     
     @Query(description = "Sugestão de processos", type = QueryType.SUGGESTION)

@@ -1,6 +1,11 @@
 package br.jus.stf.plataforma.processos.domain;
 
-import java.util.Date;
+
+import java.util.List;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import br.jus.stf.core.framework.component.query.helper.Criteria;
 
 /**
  * @author Rodrigo Barreiros
@@ -10,64 +15,15 @@ import java.util.Date;
  */
 public class PesquisarProcessosQuery {
 	
-	private String classe;
+	@NotEmpty
+	private List<Criteria> criterias;
 	
-	private Long numero;
+	public List<Criteria> getCriterias() {
+		return criterias;
+	}
 	
-	private String protocolo;
-	
-	private Date dataDistribuicao;
-	
-	private String relator;
-	
-	private String parte;
-
-	public String getClasse() {
-		return classe;
-	}
-
-	public void setClasse(String classe) {
-		this.classe = classe;
-	}
-
-	public Long getNumero() {
-		return numero;
-	}
-
-	public void setNumero(Long numero) {
-		this.numero = numero;
-	}
-
-	public String getProtocolo() {
-		return protocolo;
-	}
-
-	public void setProtocolo(String protocolo) {
-		this.protocolo = protocolo;
-	}
-
-	public Date getDataDistribuicao() {
-		return dataDistribuicao;
-	}
-
-	public void setDataDistribuicao(Date dataDistribuicao) {
-		this.dataDistribuicao = dataDistribuicao;
-	}
-
-	public String getRelator() {
-		return relator;
-	}
-
-	public void setRelator(String relator) {
-		this.relator = relator;
-	}
-
-	public String getParte() {
-		return parte;
-	}
-
-	public void setParte(String parte) {
-		this.parte = parte;
+	public void setCriterias(List<Criteria> criterias) {
+		this.criterias = criterias;
 	}
 	
 }

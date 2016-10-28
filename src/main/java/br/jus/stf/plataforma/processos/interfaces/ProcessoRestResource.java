@@ -1,6 +1,5 @@
 package br.jus.stf.plataforma.processos.interfaces;
 
-import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -34,7 +33,7 @@ public class ProcessoRestResource {
 
 	@RequestMapping(value = "/pesquisa-avancada", method = POST)
 	public List<Processo> pesquisar(@RequestBody @Valid PesquisarProcessosQuery query, BindingResult result) {
-		if (isBlank(query.getProtocolo()) && isBlank(query.getParte())) {
+		if (result.hasErrors()) {
 			throw new IllegalArgumentException(result.getAllErrors().toString());
 		}
 		return finder.execute(query);
